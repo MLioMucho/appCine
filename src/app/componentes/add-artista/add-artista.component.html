@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <table class="table table-bordered table-striped tabla table-hover table-dark">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Papel</th>
+            <th>Web</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let artista of artistas; let i=index"
+              (click)="editar(artista)"
+              [class.active]="artista===selectArtista">
+            <td> <span class="badge badge-secondary">{{ artista.idArtista }}</span></td>
+            <td> {{ artista.nombre }}</td>
+            <td> {{ artista.papel}}</td>
+            <td> <a href="{{artista.weboficial}}" target="_blank">{{ artista.weboficial}}</a></td>
+            <td><button class="btn btn-danger fas fa-user-times" *ngIf="selectArtista.idArtista===artista.idArtista" (click)=borrarArtista(i)></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h2>Añadir nuevo artista</h2>
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectArtista.nombre" placeholder="Nombre" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectArtista.papel" placeholder="Actor, director, productor..." class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectArtista.weboficial" placeholder="WebOficial" class="form-control">
+          </div>
+          <button (click)="addOrEdit()" class="btn btn-primary"> Salvar </button>
+          <button class="btn btn-danger" (click)="borraFormulario()">Borrar Formulario</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

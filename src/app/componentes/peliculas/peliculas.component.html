@@ -1,0 +1,247 @@
+
+
+<div class="row">
+  <div class="col-lg-8">
+    <h1>Administación películas</h1>
+  </div>
+</div>
+<div class="aviso" *ngIf="alerta"></div><!-- *ngIf condicional en el que si exite msg mostrara alerta,
+                                              fondo transparente para no poder meter nada en formulario-->
+
+<div class="alert alert-success alert-dismissable centrado"  *ngIf="alerta">
+  <a class="close" (click)="closeAlert()"> &times; </a>
+  {{alerta}}
+</div>
+
+<div class="row">
+  <div class="col-lg-3  mt-5" style="text-align:center" >
+      <a title="Cargar caratula" alt="Cargar caratula" >
+        <label style="font-size: 9em; color: darkblue;" for="cover">
+          <i class="fas fa-upload" *ngIf="!cover"></i>
+        </label>
+        <img src="{{selectPelicula.cover}}" *ngIf="cover" class="cover">
+      </a>
+
+        <div class="col-lg-12">
+          <label type="button" class="btn btn-success mt-2" for="cover" (click)=subirCover($event.target.files)>Subir/Cambiar Foto</label>
+          <label  type="button"
+                  class="btn btn-info mt-2"
+                  (click)="preCarga()"
+                  *ngIf="selectPelicula.cover; else desactivado">Ver</label>
+        <ng-template #desactivado>
+          <button type="button"
+            class="btn btn-info mt-0"
+            disabled >Ver</button>
+        </ng-template>
+            <input  type="file"
+                    id="cover"
+                    name="cover"
+                    [(ngModel)]="selectPelicula.cover"
+                    (change)="subirCover($event.target.files)"
+                  >
+        </div>
+  </div>
+
+
+  <div class="col-lg-8">
+    <h2>Introducir película:</h2>
+
+    <form (ngSubmit)="addOrEditPelicula()" class="form-horizontal" method="post">
+      <div class="row">
+
+        <div class="form-group col-lg-7 col-sm-7">
+          <label for="nombre" class="control-label col-lg-8 col-sm-6">Titulo</label>
+          <div class="col-lg-12 col-sm-12">
+            <input  type="text"
+                    class="form-control"
+                    id="titulo"
+                    name="titulo"
+                    [(ngModel)]="selectPelicula.titulo"
+                    placeholder="Titulo película español">
+          </div>
+        </div>
+
+        <div class="form-group col-lg-5 col-sm-5">
+          <label for="director" class="control-label col-lg-8 col-sm-6">Director/es</label>
+          <div class="col-lg-12">
+            <input  type="text"
+                    class="form-control"
+                    id="director"
+                    name="director"
+                    [(ngModel)]="selectPelicula.director"
+                    placeholder="Director/es separados por coma">
+          </div>
+        </div>
+<!--TODO-> boton con + para añadir mas directores-->
+
+        <div class="form-group col-lg-7 col-sm-7">
+          <label for="nombreOriginal" class="control-label col-lg-8 col-sm-6">Titulo Original</label>
+          <div class="col-lg-12 col-sm-12">
+            <input  type="text"
+                    class="form-control"
+                    id="tituloOriginal"
+                    name="tituloOriginal"
+                    [(ngModel)]="selectPelicula.tituloOriginal"
+                    placeholder="Titulo original película">
+          </div>
+        </div>
+
+        <div class="form-group col-lg-3 col-sm-3">
+          <label for="genero" class="control-label col.lg-12 col-sm-12">Genero</label>
+          <div class="col-sm-12">
+            <input  type="text"
+                    class="form-control"
+                    id="genero"
+                    name="genero"
+                    [(ngModel)]="selectPelicula.genero"
+                    placeholder="Acción, drama..... ">
+          </div>
+        </div>
+
+        <div class="form-group col-lg-2 col-sm-2">
+          <label for="clasificacion" class="control-label col-sm-12">Clasificación</label>
+          <div class="col-sm-12">
+            <select class="form-control"
+                    name="clasificacion"
+                    id="clasificacion"
+                    [(ngModel)]="selectPelicula.clasificacion"
+                    >
+                    <option selected value="0">Todos</option>
+                    <option value="13">+13</option>
+                    <option value="16">+16</option>
+                    <option value="18">+18</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-3 col-sm-3">
+          <label for="genero" class="control-label col-sm-12">Idioma</label>
+          <div class="col-sm-12">
+            <input  type="text"
+                    class="form-control"
+                    id="idioma"
+                    name="idioma"
+                    [(ngModel)]="selectPelicula.idioma"
+                    placeholder="Idioma">
+          </div>
+        </div>
+<!-- TODO -> boton con + para añadir mas idiomas-->
+        <div class="form-group col-lg-3 col-sm-3">
+          <label for="genero" class="control-label col-sm-12">Duración</label>
+          <div class="col-sm-12">
+            <input  type="text"
+                    class="form-control"
+                    id="duracion"
+                    name="duracion"
+                    [(ngModel)]="selectPelicula.duracion"
+                    placeholder="Duración min.">
+          </div>
+        </div>
+
+        <div class="form-group col-lg-3 col-sm-3">
+          <label for="nacionalidad" class="control-label col-sm-12">País</label>
+          <div class="col-lg-12">
+            <input  type="text"
+                    class="form-control"
+                    id="nacionalidad"
+                    name="nacionalidad"
+                    [(ngModel)]="selectPelicula.pais"
+                    placeholder="País">
+          </div>
+        </div>
+
+        <div class="form-group col-lg-3 col-sm-3">
+          <label for="anio" class="control-label col-sm-12">Año</label>
+          <div class="col-lg-12">
+            <input  type="text"
+                    class="form-control"
+                    id="anio"
+                    name="anio"
+                    [(ngModel)]="selectPelicula.anio"
+                    placeholder="Año">
+          </div>
+        </div>
+        <div class="form-group col-lg-12 col-sm-12">
+          <label for="weboficial" class="control-label col-sm-12">Web Oficial</label>
+          <div class="col-lg-12">
+            <input  type="text"
+                    class="form-control"
+                    id="weboficial"
+                    name="weboficial"
+                    [(ngModel)]="selectPelicula.weboficial"
+                    placeholder="Web Oficial, si no hay poner 404">
+          </div>
+        </div>
+
+        <div class="form-group col-lg-12 col-sm-12">
+          <label for="sinopsis" class="control-label col-sm-12">Sinopsis</label>
+          <div class="col-lg-12">
+            <textarea rows="5"
+                      cols="40"  type="text"
+                      class="form-control"
+                      id="sinopsis"
+                      name="sinopsis"
+                      [(ngModel)]="selectPelicula.sinopsis"
+                      > Sinopsis pelicula
+            </textarea>
+          </div>
+        </div>
+
+      </div><!--Row-->
+
+      <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+          <button type="submit" name="button" class="btn btn-success">Salvar/Terminar</button>
+          <button type="button" name="button" class="btn btn-danger" (click)="borraFormulario()">Borrar formulario</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<button class="btn btn-info col-lg-12" type="button" data-toggle="collapse" data-target="#todasPeliculas" aria-expanded="false" aria-controls="todasPeliculas">Todas las peliculas</button>
+
+<div class="row collapse" id="todasPeliculas">
+  <div class="seleccion col-lg-12 text-center mt-3">
+    <h3>Resumen listado de peliculas</h3>
+    <table class="table table-bordered table-striped tabla table-dark table-responsive table-hover mt-4">
+      <thead>
+        <tr class="filters">
+          <th>id</th>
+          <th>Nombre</th>
+          <th>Original</th>
+          <th>Director</th>
+
+          <th>Duración</th>
+          <th>Clasificacion</th>
+          <th>Idioma</th>
+          <th>Web</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pelicula of peliculas; let i=index"
+            (click)="editar(pelicula)"
+            [class.active]="pelicula===selectPelicula">
+          <td><span class="badge badge-secondary">{{pelicula.idPeli}}</span></td>
+          <td>{{pelicula.titulo}}</td>
+          <td>{{pelicula.tituloOriginal}}</td>
+          <td>{{pelicula.director}}</td>
+
+          <td>{{pelicula.duracion}}</td>
+          <td>{{pelicula.clasificacion}}</td>
+          <td>{{pelicula.idioma}}</td>
+          <td><a href="{{pelicula.weboficial}}" target="_blank">{{pelicula.weboficial}}</a></td>
+          <td>
+            <button class="btn btn-danger fas fa-trash" (click)="borraPelicula(i)" *ngIf="selectPelicula.idPeli===pelicula.idPeli"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+<button class="btn btn-warning col-lg-12" type="button" data-toggle="collapse" data-target="#todasPeliculas" aria-expanded="false" aria-controls="todasPeliculas">Plegar</button>
+</div>

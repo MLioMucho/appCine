@@ -1,0 +1,15 @@
+.piepagina{
+  width: 100%;
+
+  position: relative;
+  top:100%;
+  padding: 10px;
+
+/*  height: auto;*/
+  background-color: black;
+  color: #fff;
+  /* Prueba pie de pagina pegajoso*/
+  height: 5px;
+  margin-top: -5px;
+  z-index: -1;
+}

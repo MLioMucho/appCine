@@ -1,0 +1,62 @@
+
+<div class="row">
+  <div class="aviso" *ngIf="alerta"></div><!-- *ngIf condicional en el que si exite msg mostrara alerta,
+                                                fondo transparente para no poder meter nada en formulario-->
+
+  <div class="alert alert-success alert-dismissable centrado"  *ngIf="alerta">
+    <a class="close" (click)="closeAlert()"> &times; </a>
+    {{alerta}}
+  </div>
+
+  <div class="seleccion col-lg-9 text-center">
+    <h3>Listado de Artistas</h3>
+    <table class="table table-bordered table-striped tabla table-dark">
+      <thead>
+        <tr class="filters">
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Papel</th>
+          <th>Web</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody class="verArtista">
+        <tr *ngFor="let artista of artistas; let i=index">
+          <td>{{artista.idArtista}}</td>
+          <td>{{artista.nombre}}</td>
+          <td>{{artista.papel}}</td>
+          <td><a href="{{artista.weboficial}}" target="_blank">{{artista.weboficial}}</a></td>
+          <td>
+            <a class="btn btn-success" (click)="editArtista(i)">Editar</a>
+            <a class="btn btn-danger" (click)="deleteArtista(i)">Borrar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-lg-3 text-center">
+    <h4>Añadir nuevo artista</h4>
+    <form (ngSubmit)="onSubmit()" #formart="ngForm">
+      <div class="form-group">
+        <label for="idArtista">Identificador</label>
+        <input type="text" class="form-control" id="idArtista" ngModel name="idArtista">
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" ngModel name="nombre">
+      </div>
+      <div class="form-group">
+        <label for="papel">Papel</label>
+        <input type="text" class="form-control" id="papel" ngModel name="papel">
+      </div>
+      <div class="form-group">
+        <label for="webficial">Web Oficial</label>
+        <input type="text" class="form-control" id="weboficial" ngModel name="weboficial">
+      </div>
+      <button type="submit" class="btn btn-success">Añadir Artista</button>
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="container-fluid " id="fondoSesion">
+  <div class="login-box">
+        <div class="avatar">
+          <h1>CB</h1>
+        </div>
+        <h1>Login aquí</h1>
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+          <!-- User name-->
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" value="" placeholder="Usuario" ngModel>
+
+          <!-- User name-->
+          <label for="psw">Pasword</label>
+          <input type="password" id="psw" name="psw" value="" placeholder="Contraseña" ngModel>
+
+          <input type="submit" value="Login-in">
+          <a href="">Contraseña perdida</a>
+          <a href="">Crear cuenta</a>
+        </form>
+        <h6>
+            {{copyright}} {{hoy |date:'y'}}
+        </h6>
+    </div>
+
+</div>

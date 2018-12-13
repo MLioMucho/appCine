@@ -1,0 +1,127 @@
+<div class="row">
+  <h1 class="ml-4">Administración de salas</h1>
+
+  <div class="col-sm-12 ml-3 col-lg-8" id="sala">
+
+    <div class="col-sm-12 butacaSala ">
+      <table class="text-centered " id="tsala">
+        <tbody>
+          <tr>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+          </tr>
+          <tr>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+          </tr>
+          <tr>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+          </tr>
+          <tr>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+            <td><span class="fas fa-couch"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-12 card butacaSala" style="text-align:center">
+      Pantalla
+    </div>
+  </div>
+  <div class="col-lg-3 form-group row ml-2">
+
+    <div class="col-lg-12">
+      <label for="nombresala" class="col-fom-label col-lg-12"><h3>Nombre Sala</h3></label>
+
+      <input  type="text"
+              id="nombresala"
+              name="nombresala"
+              class="form-control-lg col-lg-11"
+              placeholder="Nombre Sala"
+              [(ngModel)]="sala.nombre"
+              >
+    </div>
+    <div class="col-lg-6 col-sm-5">
+      <label for="filas" class="col-sm-5 col-lg-6 col-form-label "><h4>Filas</h4></label>
+      <input  id="filas"
+              class="col-sm-8 form-control-lg number"
+              type="number"
+              name="filas"
+              value="4"
+              [(ngModel)]="sala.filas"
+              (change)="crearSala()"
+              >
+    </div>
+    <div class="col-lg-6 col-sm-5">
+      <label for="butacas" class="col-sm-5 col-lg-6 col-form-label"><h4>Butacas</h4></label>
+      <input id="butacas"
+             class="col-sm-8 form-control-lg number"
+             type="number"
+             name="butacas"
+             value="4"
+             [(ngModel)]="sala.columnas"
+             (change)="crearSala()"
+             >
+    </div>
+    <div class="col-lg-12 mt-3 ">
+      <button type="button" class="col-lg-5 col-sm-5 btn btn-success" (click)="addOrEdit()">Salvar</button>
+
+      <button type="button"class="col-lg-5 col-sm-6 btn btn-danger" (click)="borraFormulario()">Reiniciar</button>
+    </div>
+  </div>
+
+</div> <!-- Fin row Creacion sala-->
+
+<div class="row">
+  <div class="col-lg-3"></div>
+
+  <div class="col-lg-5 mt-2">
+  <button class="btn btn-info col-lg-12"
+          type="button"
+          data-toggle="collapse"
+          data-target="#todaslasSalas"
+          aria-expanded="false"
+          aria-controls="todaslasSalas">Ver todas las salas</button>
+  <div class="collapse" id="todaslasSalas">
+    <table class="table table-bordered table-striped tabla table-hover table-dark mt-2">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Filas</th>
+          <th>Butaca</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let estasala of salas; let i=index"
+            (click)="editar(estasala)"
+            [class.active]="estasala===sala">
+          <td> <span class="badge badge-secondary">{{ estasala.idSala }}</span></td>
+          <td> {{ estasala.nombre }}</td>
+          <td> {{ estasala.filas}}</td>
+          <td> {{ estasala.columnas}}</td>
+          <td><button class="btn btn-danger fas fa-trash" *ngIf="sala.idSala===estasala.idSala" (click)=borrarSala(i)></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-warning col-lg-12 mt-2"
+            type="button"
+            data-toggle="collapse"
+            data-target="#todaslasSalas"
+            aria-expanded="false"
+            aria-controls="todaslasSalas">Plegar</button>
+    </div>
+  </div>
+  <div class="col-lg-3"></div>
+</div>

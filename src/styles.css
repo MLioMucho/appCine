@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  /*compatibilidades para los diferentes navegadores*/
+  background-color: black;
+  padding: 0px;
+  height: 100%;
+  margin:0;
+}
+
+.logo {
+  font-family: Colonna mt;
+  font-size: 35px;
+}
+
+
+.app {
+  border-radius: 4px;
+  margin-top: -30px;
+  padding: 10px;
+  padding-top: 10px;
+
+/*
+  background: #bdc3c7;  /* fallback for old browsers */
+/*  background: -webkit-linear-gradient(to bottom, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+/*  background: linear-gradient(to bottom, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background: #bdc3c7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+/*
+  background: #02AAB0;
+  background: -webkit-linear-gradient(left,#eee, #EEE8AA);
+  background: -moz-linear-gradient(left,#eee, #EEE8AA);
+  background: -o-linear-gradient(left,#eee, #EEE8AA);
+  background: linear-gradient(to right,#eee, #EEE8AA);/*Chrome 10.25, Safari5.1.6 */
+
+}
+div.aviso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  opacity: 0.5;
+  z-index: 99;
+}
+.centrado {
+  opacity: 1;
+  width: 300px;
+  position: fixed;
+  top: 50%;
+  text-align: center;
+  left: calc(50% - 150px);
+  z-index: 100;
+}

@@ -1,0 +1,36 @@
+
+.marquesina {
+  background-image: url("../assets/imagenes/cine.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: cover;
+}
+.titulo {
+  font-family: Colonna mt;
+  font-size: 4em;
+  color: #c0c0c0;
+}
+.avatar {
+  /*Mala practica, imagen grande para hacerla luego muy chica, preferible poner tamaño similar*/
+  width: 100px;
+  height: 100px;
+  /*Convertir imagen en circular*/
+  border-radius: 50%;
+  color: white;
+
+  /*Posicionarlo en el centro*/
+  position: relative;
+  top: 20px;
+  /*calc()--> calcula la posicion del left*/
+  left: calc(50% - 50px);
+  /*Prueba con un div y letras*/
+  text-align: center;
+  background-color: #b80f22/*#c0c0e0;/*#87CEEB;/*#b80f22;*/
+}
+.avatar h1 {
+  margin-top: -33px;
+  font-size: 40px;;/*Hay que ir jugando con este valor para central la letra/s segun la fuente de letra escogida*/
+  font-family: Colonna mt;
+  padding-top: 25px;
+}

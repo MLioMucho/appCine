@@ -1,0 +1,96 @@
+<!--
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<div class="container-fluid">
+
+  <a class="navbar-brand" href="/"><b>Cine Bulevar</b></a>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="activaNavbar" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/">INICIO <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="activaNavbar" >
+          <a class="nav-link" routerLink="/artistas">Artistas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="activaNavbar">
+          <a class="nav-link" routerLink="/peliculas">Peliculas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="activaNavbar">
+          <a class="nav-link" routerLink="/salas">Salas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="activaNavbar">
+          <a class="nav-link" routerLink="/sesion">Sesion</a>
+        </li>
+      </ul>
+  </div>
+
+</div>
+
+</nav>
+-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+
+  <a class="navbar-brand logo" href="#">CB</a>
+
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" routerLink="/">Inicio</a>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive="active" >
+        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" >Administracion</a>
+        <div class="dropdown-menu">
+<!--          <a class="dropdown-item" routerLink="/artistas">Artistas</a> -->
+          <a class="dropdown-item" routerLink="/addartista">Artistas</a>
+          <a class="dropdown-item" routerLink="/peliculas">Peliculas</a>
+          <a class="dropdown-item" routerLink="/salas" >Salas</a>
+          <a class="dropdown-item" routerLink="/sesion" >Proyeccion</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" >Cartelera</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/inicio">En cartel</a>
+          <a class="dropdown-item" routerLink="/proximamente">Proximamente</a>
+
+        </div>
+      </li>
+
+  <!--
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/addproveedores">AddProveedores</a>
+      </li>
+  -->
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/iniciosesion" >Iniciar Sesion</a>
+      </li>
+      <li>
+          <a class="nav-link" (click)="logout()"  >Cerrar Sesion</a>
+      </li>
+    </ul>
+
+  </div>
+
+</nav>

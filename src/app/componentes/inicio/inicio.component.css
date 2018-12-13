@@ -1,0 +1,28 @@
+.cover {
+  width: 142px;
+  height: 231px;
+  padding: 5px;
+
+  position: relative;
+  top: 2px;
+  left: calc(50% - 71px);
+}
+
+.divcover {
+  padding: 1px;
+  padding-left: 1px;
+  z-index: 99;
+}
+.horarios {
+  width: 90%;
+  font-size: 0.75em;
+}
+
+div.centerTable{
+        text-align: center;
+}
+
+div.centerTable table {
+       margin: 0 auto;
+       text-align: left;
+}
